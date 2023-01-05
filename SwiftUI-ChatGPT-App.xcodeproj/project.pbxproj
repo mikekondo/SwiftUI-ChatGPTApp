@@ -15,6 +15,7 @@
 		9551D2D729664DB300902AE7 /* SwiftUI_ChatGPT_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551D2D629664DB300902AE7 /* SwiftUI_ChatGPT_AppUITests.swift */; };
 		9551D2D929664DB300902AE7 /* SwiftUI_ChatGPT_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551D2D829664DB300902AE7 /* SwiftUI_ChatGPT_AppUITestsLaunchTests.swift */; };
 		9551D2E729664E2C00902AE7 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9551D2E629664E2C00902AE7 /* OpenAISwift */; };
+		9551D2EA29665C2800902AE7 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 9551D2E929665C2800902AE7 /* PKHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9551D2E729664E2C00902AE7 /* OpenAISwift in Frameworks */,
+				9551D2EA29665C2800902AE7 /* PKHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +149,7 @@
 			name = "SwiftUI-ChatGPT-App";
 			packageProductDependencies = (
 				9551D2E629664E2C00902AE7 /* OpenAISwift */,
+				9551D2E929665C2800902AE7 /* PKHUD */,
 			);
 			productName = "SwiftUI-ChatGPT-App";
 			productReference = 9551D2B829664DB200902AE7 /* SwiftUI-ChatGPT-App.app */;
@@ -222,6 +225,7 @@
 			mainGroup = 9551D2AF29664DB200902AE7;
 			packageReferences = (
 				9551D2E529664E2C00902AE7 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				9551D2E829665C2800902AE7 /* XCRemoteSwiftPackageReference "PKHUD" */,
 			);
 			productRefGroup = 9551D2B929664DB200902AE7 /* Products */;
 			projectDirPath = "";
@@ -601,6 +605,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9551D2E829665C2800902AE7 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -608,6 +620,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9551D2E529664E2C00902AE7 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
+		};
+		9551D2E929665C2800902AE7 /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9551D2E829665C2800902AE7 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

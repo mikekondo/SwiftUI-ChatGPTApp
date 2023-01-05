@@ -7,12 +7,14 @@
 
 import SwiftUI
 import OpenAISwift
+import PKHUD
 
 struct ContentView: View {
     @State private var inputText = ""
     @State private var messageArray: [String] = []
+    @State var progress = false
 
-    private var client = OpenAISwift(authToken: "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")
+    private var client = OpenAISwift(authToken: "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")
 
     var body: some View {
         NavigationStack {
@@ -21,6 +23,7 @@ struct ContentView: View {
                     Text(message)
                     Spacer()
                 }
+
                 HStack {
                     TextField("質問を入力", text: $inputText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -42,12 +45,14 @@ struct ContentView: View {
         client.sendCompletion(with: inputText,maxTokens: 500) { result in
             switch result {
             case .success(let model):
-                DispatchQueue.main.async {
+                    DispatchQueue.main.async {
                     let output = model.choices.first?.text ?? ""
                     self.messageArray.append("\(output)")
                     self.inputText = ""
                 }
+                print("成功")
             case .failure(_):
+                print("エラー")
                 break
             }
         }
