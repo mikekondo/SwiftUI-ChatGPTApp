@@ -15,21 +15,24 @@ struct ContentView: View {
     private var client = OpenAISwift(authToken: "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")
 
     var body: some View {
-        VStack {
-            ForEach(messageArray, id: \.self) { message in
-                Text(message)
-                Spacer()
-            }
-            HStack {
-                TextField("質問を入力", text: $inputText)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Button {
-                    send()
-                } label: {
-                    Text("送信")
+        NavigationStack {
+            VStack {
+                ForEach(messageArray, id: \.self) { message in
+                    Text(message)
+                    Spacer()
                 }
+                HStack {
+                    TextField("質問を入力", text: $inputText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Button {
+                        send()
+                    } label: {
+                        Text("送信")
+                    }
+                }
+                .padding()
             }
-            .padding()
+            .navigationTitle("ChatGPT")
         }
     }
 
