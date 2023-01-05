@@ -10,12 +10,14 @@ import OpenAISwift
 import PKHUD
 
 struct ContentView: View {
+    // MARK: - Variables
     @State private var inputText = ""
     @State private var messageArray: [String] = []
     @State private var isProgressView = false
 
     private var client = OpenAISwift(authToken: "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")
 
+    // MARK: - Views
     var body: some View {
         NavigationStack {
             VStack() {
@@ -61,9 +63,7 @@ struct ContentView: View {
                     self.inputText = ""
                 }
                 isProgressView.toggle()
-                print("success,progress:",isProgressView)
             case .failure(_):
-                print("エラー")
                 break
             }
         }
