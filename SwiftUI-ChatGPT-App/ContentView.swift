@@ -18,13 +18,17 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack() {
                 ForEach(messageArray, id: \.self) { message in
-                    Text(message)
+                    HStack{
+                        Text(message)
+                            .padding()
+                        Spacer()
+                    }
                     Spacer()
                     if isProgressView {
                         ProgressView()
-                            .scaleEffect(x: 10, y: 10, anchor: .center)
+                            .scaleEffect(x: 3, y: 3, anchor: .center)
                     }
                     Spacer()
                 }
@@ -47,13 +51,13 @@ struct ContentView: View {
 
     private func send() {
         guard !inputText.trimmingCharacters(in: .whitespaces).isEmpty else { return }
-        messageArray.append("\(inputText)")
+        messageArray.append("Q. \(inputText)")
         client.sendCompletion(with: inputText,maxTokens: 500) { result in
             switch result {
             case .success(let model):
                     DispatchQueue.main.async {
                     let output = model.choices.first?.text ?? ""
-                    self.messageArray.append("\(output)")
+                    self.messageArray.append("A. \(output)")
                     self.inputText = ""
                 }
                 isProgressView.toggle()
