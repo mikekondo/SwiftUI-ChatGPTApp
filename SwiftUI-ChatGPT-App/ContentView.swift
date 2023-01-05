@@ -12,7 +12,7 @@ import PKHUD
 struct ContentView: View {
     @State private var inputText = ""
     @State private var messageArray: [String] = []
-    @State var progress = false
+    @State private var isProgressView = false
 
     private var client = OpenAISwift(authToken: "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")
 
@@ -22,12 +22,18 @@ struct ContentView: View {
                 ForEach(messageArray, id: \.self) { message in
                     Text(message)
                     Spacer()
+                    if isProgressView {
+                        ProgressView()
+                            .scaleEffect(x: 10, y: 10, anchor: .center)
+                    }
+                    Spacer()
                 }
-
+                
                 HStack {
                     TextField("質問を入力", text: $inputText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Button {
+                        isProgressView.toggle()
                         send()
                     } label: {
                         Text("送信")
@@ -50,7 +56,8 @@ struct ContentView: View {
                     self.messageArray.append("\(output)")
                     self.inputText = ""
                 }
-                print("成功")
+                isProgressView.toggle()
+                print("success,progress:",isProgressView)
             case .failure(_):
                 print("エラー")
                 break
